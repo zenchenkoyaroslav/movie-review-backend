@@ -1,5 +1,6 @@
 package com.yz.moviereview.entities;
 
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import lombok.Data;
 
 import javax.persistence.*;
@@ -31,6 +32,7 @@ public class Film {
 
     @ManyToMany(cascade = {CascadeType.ALL})
     @JoinTable(name = "REL_FILM_ACTOR", joinColumns = { @JoinColumn(name = "film_id")}, inverseJoinColumns = {@JoinColumn(name = "actor_id")})
+    @JsonManagedReference
     List<Actor> actors = new ArrayList<>();
 
     @OneToMany(mappedBy = "film", cascade = {CascadeType.PERSIST, CascadeType.MERGE})

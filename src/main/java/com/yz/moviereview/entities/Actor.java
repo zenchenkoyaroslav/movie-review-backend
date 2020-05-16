@@ -1,5 +1,6 @@
 package com.yz.moviereview.entities;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import lombok.Data;
 
 import javax.persistence.*;
@@ -21,5 +22,6 @@ public class Actor {
     private String photo;
 
     @ManyToMany(mappedBy = "actors")
+    @JsonBackReference
     private List<Film> films = new ArrayList<>();
 }

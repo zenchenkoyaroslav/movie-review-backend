@@ -3,6 +3,7 @@ package com.yz.moviereview;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
+
 @SpringBootApplication
 public class MovieReviewApplication {
 
