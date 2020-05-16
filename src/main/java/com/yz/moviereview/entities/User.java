@@ -1,6 +1,7 @@
 package com.yz.moviereview.entities;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import lombok.Data;
 
 import javax.persistence.*;
@@ -23,7 +24,7 @@ public class User {
 
     @Column(nullable = false)
     private String email;
-    
+
     @Column(nullable = false)
     private String password;
 
@@ -34,6 +35,7 @@ public class User {
     @Column(nullable = false)
     private USERROLE role;
 
+    @JsonManagedReference
     @OneToMany(mappedBy = "user", cascade = {CascadeType.PERSIST, CascadeType.MERGE})
     private List<UserFilmReviewRelation> filmReviewRelations = new ArrayList<>();
 }

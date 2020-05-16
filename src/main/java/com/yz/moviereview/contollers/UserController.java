@@ -14,6 +14,11 @@ import javax.servlet.http.HttpServletRequest;
 @RequestMapping("/users")
 public class UserController extends Controller {
 
+    @GetMapping(value = "/current")
+    public @ResponseBody User getCurrentUser(HttpServletRequest request){
+        return getUser(request);
+    }
+
     @PostMapping(value = "/login")
     public @ResponseBody UserRequest login(@RequestBody UserRequest request){
         User userDB = userService.login(request.getUsername(), request.getPassword());
