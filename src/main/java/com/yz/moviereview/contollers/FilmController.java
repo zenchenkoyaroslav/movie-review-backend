@@ -17,13 +17,13 @@ public class FilmController extends Controller {
 
     @GetMapping
     public @ResponseBody
-    List<Film> getAllFilms(){
-        return filmService.getAllFilms();
+    List<Film> getFilms(@RequestParam(value = "country", required = false) String country, @RequestParam(value = "year", required = false) Integer year){
+        return filmService.getFilms(country, year);
     }
 
     @GetMapping("/{id}")
     public @ResponseBody
-    Film getAllFilms(@PathVariable(value = "id", required = true) Long id){
+    Film getFilm(@PathVariable(value = "id", required = true) Long id){
         return filmService.getFilm(id);
     }
 }

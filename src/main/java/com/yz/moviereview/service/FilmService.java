@@ -16,6 +16,19 @@ public class FilmService {
         return filmRepository.findAll();
     }
 
+    public List<Film> getFilms(String country, Integer year){
+        if (country != null && year != null){
+            return filmRepository.findByCountryAndYear(country, year);
+        }
+        if (country != null){
+            return filmRepository.findByCountry(country);
+        }
+        if (year != null){
+            return filmRepository.findByYear(year);
+        }
+        return getAllFilms();
+    }
+
     public Film getFilm(Long id){
         return filmRepository.findById(id).orElse(null);
     }
