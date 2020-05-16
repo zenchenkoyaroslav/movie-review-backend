@@ -26,7 +26,14 @@ public class UserService {
 
     private String encodePassword(String password){
         byte[] hash = messageDigest.digest(password.getBytes(StandardCharsets.UTF_8));
-        return new String(hash);
+        StringBuffer hexString = new StringBuffer();
+
+        for (int i = 0; i < hash.length; i++) {
+            String hex = Integer.toHexString(0xff & hash[i]);
+            if(hex.length() == 1) hexString.append('0');
+            hexString.append(hex);
+        }
+        return hexString.toString();
     }
 
     public User login(String username, String password){
