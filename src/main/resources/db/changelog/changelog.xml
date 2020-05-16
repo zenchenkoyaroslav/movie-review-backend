@@ -28,6 +28,9 @@
             <column name="DESCRIPTION" type="varchar">
                 <constraints nullable="false" unique="false"/>
             </column>
+            <column name="POSTER" type="varchar">
+                <constraints nullable="false" unique="false"/>
+            </column>
             <column name="YEAR" type="int">
                 <constraints nullable="false" unique="false"/>
             </column>
@@ -112,6 +115,73 @@
         <addForeignKeyConstraint baseTableName="REL_USER_FILM_REVIEW" baseColumnNames="USER_ID" constraintName="FK_REL_USER_FILM_REVIEW_USER"
                                  referencedTableName="USER"
                                  referencedColumnNames="ID"/>
+    </changeSet>
+
+    <changeSet id="2" author="Yaroslav">
+        <insert tableName="ACTOR">
+            <column name="ID" value="1"/>
+            <column name="NAME" value="Aurora Snow"/>
+            <column name="PHOTO" value="https://st.kp.yandex.net/images/actor_iphone/iphone360_664531.jpg"/>
+        </insert>
+        <insert tableName="ACTOR">
+            <column name="ID" value="2"/>
+            <column name="NAME" value="Sasha Grey"/>
+            <column name="PHOTO" value="https://st.kp.yandex.net/images/actor_iphone/iphone360_1240110.jpg"/>
+        </insert>
+        <insert tableName="ACTOR">
+            <column name="ID" value="3"/>
+            <column name="NAME" value="Johnny Sins"/>
+            <column name="PHOTO" value="https://st.kp.yandex.net/images/actor_iphone/iphone360_1245289.jpg"/>
+        </insert>
+
+        <insert tableName="FILM">
+            <column name="ID" value="1"/>
+            <column name="TITLE" value="Star Wars"/>
+            <column name="DESCRIPTION" value="Star Wars Bla bla bla" />
+            <column name="YEAR" value="2013"/>
+            <column name="COUNTRY" value="USA"/>
+            <column name="POSTER" value="https://avatars.mds.yandex.net/get-kinopoisk-image/1600647/9bdc6690-de82-4a8c-a114-aa3a353bc1da/360"/>
+        </insert>
+        <insert tableName="FILM">
+            <column name="ID" value="2"/>
+            <column name="TITLE" value="Shrek"/>
+            <column name="DESCRIPTION" value="Shrek Bla bla bla" />
+            <column name="YEAR" value="2007"/>
+            <column name="COUNTRY" value="USA"/>
+            <column name="POSTER" value="https://avatars.mds.yandex.net/get-kinopoisk-image/1946459/7ade06a8-4178-4386-9ee2-87fec5a172eb/360"/>
+        </insert>
+        <insert tableName="FILM">
+            <column name="ID" value="3"/>
+            <column name="TITLE" value="Twilight"/>
+            <column name="DESCRIPTION" value="Twilight Bla bla bla" />
+            <column name="YEAR" value="2007"/>
+            <column name="COUNTRY" value="USA"/>
+            <column name="POSTER" value="https://avatars.mds.yandex.net/get-kinopoisk-image/1599028/1d8554d1-5f37-45db-bb5a-1e9397f57e52/360"/>
+        </insert>
+        <insert tableName="REL_FILM_ACTOR">
+            <column name="FILM_ID" value="1"/>
+            <column name="ACTOR_ID" value="1"/>
+        </insert>
+        <insert tableName="REL_FILM_ACTOR">
+            <column name="FILM_ID" value="1"/>
+            <column name="ACTOR_ID" value="2"/>
+        </insert>
+        <insert tableName="REL_FILM_ACTOR">
+            <column name="FILM_ID" value="2"/>
+            <column name="ACTOR_ID" value="1"/>
+        </insert>
+        <insert tableName="REL_FILM_ACTOR">
+            <column name="FILM_ID" value="3"/>
+            <column name="ACTOR_ID" value="1"/>
+        </insert>
+        <insert tableName="REL_FILM_ACTOR">
+            <column name="FILM_ID" value="3"/>
+            <column name="ACTOR_ID" value="2"/>
+        </insert>
+        <insert tableName="REL_FILM_ACTOR">
+            <column name="FILM_ID" value="3"/>
+            <column name="ACTOR_ID" value="3"/>
+        </insert>
     </changeSet>
 
 </databaseChangeLog>

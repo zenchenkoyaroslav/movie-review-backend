@@ -21,6 +21,9 @@ public class Film {
     private String description;
 
     @Column(nullable = false)
+    private String poster;
+
+    @Column(nullable = false)
     private Integer year;
 
     @Column(nullable = false)
