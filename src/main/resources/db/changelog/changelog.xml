@@ -1,0 +1,117 @@
+<databaseChangeLog
+        xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+   http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.4.xsd">
+
+
+    <changeSet id="1" author="Yaroslav">
+        <createTable tableName="ACTOR">
+            <column name="ID" type="bigint" autoIncrement="true" startWith="100">
+                <constraints primaryKey="true" nullable="false"/>
+            </column>
+            <column name="NAME" type="varchar">
+                <constraints nullable="false" unique="true"/>
+            </column>
+            <column name="PHOTO" type="varchar">
+                <constraints nullable="false" unique="false"/>
+            </column>
+        </createTable>
+
+        <createTable tableName="FILM">
+            <column name="ID" type="bigint" autoIncrement="true" startWith="100">
+                <constraints primaryKey="true" nullable="false"/>
+            </column>
+            <column name="TITLE" type="varchar">
+                <constraints nullable="false" unique="true"/>
+            </column>
+            <column name="DESCRIPTION" type="varchar">
+                <constraints nullable="false" unique="false"/>
+            </column>
+            <column name="YEAR" type="int">
+                <constraints nullable="false" unique="false"/>
+            </column>
+            <column name="COUNTRY" type="varchar">
+                <constraints nullable="false" unique="false"/>
+            </column>
+        </createTable>
+
+        <createTable tableName="REVIEW">
+            <column name="ID" type="bigint" autoIncrement="true" startWith="100">
+                <constraints primaryKey="true" nullable="false"/>
+            </column>
+            <column name="TITLE" type="varchar">
+                <constraints nullable="false" unique="false"/>
+            </column>
+            <column name="CONTENT" type="varchar">
+                <constraints nullable="false" unique="false"/>
+            </column>
+            <column name="RATE" type="int">
+                <constraints nullable="false" unique="false"/>
+            </column>
+        </createTable>
+
+        <createTable tableName="USER">
+            <column name="ID" type="bigint" autoIncrement="true" startWith="100">
+                <constraints primaryKey="true" nullable="false"/>
+            </column>
+            <column name="NAME" type="varchar">
+                <constraints nullable="false" unique="false"/>
+            </column>
+            <column name="USERNAME" type="varchar">
+                <constraints nullable="false" unique="true"/>
+            </column>
+            <column name="EMAIL" type="varchar">
+                <constraints nullable="false" unique="true"/>
+            </column>
+            <column name="PASSWORD" type="varchar">
+                <constraints nullable="false" unique="false"/>
+            </column>
+            <column name="ROLE" type="varchar">
+                <constraints nullable="false" unique="false"/>
+            </column>
+        </createTable>
+
+        <createTable tableName="REL_USER_FILM_REVIEW">
+            <column name="ID" type="bigint" autoIncrement="true" startWith="100">
+                <constraints primaryKey="true" nullable="false"/>
+            </column>
+            <column name="USER_ID" type="bigint">
+                <constraints primaryKey="true" nullable="false"/>
+            </column>
+            <column name="FILM_ID" type="bigint">
+                <constraints primaryKey="true" nullable="false"/>
+            </column>
+            <column name="REVIEW_ID" type="bigint">
+                <constraints primaryKey="true" nullable="false"/>
+            </column>
+        </createTable>
+
+        <createTable tableName="REL_FILM_ACTOR">
+            <column name="FILM_ID" type="bigint">
+                <constraints nullable="false" unique="false"/>
+            </column>
+            <column name="ACTOR_ID" type="bigint">
+                <constraints nullable="false" unique="false"/>
+            </column>
+        </createTable>
+
+        <addForeignKeyConstraint baseTableName="REL_FILM_ACTOR" baseColumnNames="FILM_ID" constraintName="FK_REL_FILM_ACTOR_FILM"
+                                 referencedTableName="FILM"
+                                 referencedColumnNames="ID"/>
+        <addForeignKeyConstraint baseTableName="REL_FILM_ACTOR" baseColumnNames="ACTOR_ID" constraintName="FK_REL_FILM_ACTOR_ACTOR"
+                                 referencedTableName="ACTOR"
+                                 referencedColumnNames="ID"/>
+
+        <addForeignKeyConstraint baseTableName="REL_USER_FILM_REVIEW" baseColumnNames="FILM_ID" constraintName="FK_REL_USER_FILM_REVIEW_FILM"
+                                 referencedTableName="FILM"
+                                 referencedColumnNames="ID"/>
+        <addForeignKeyConstraint baseTableName="REL_USER_FILM_REVIEW" baseColumnNames="REVIEW_ID" constraintName="FK_REL_USER_FILM_REVIEW_REVIEW"
+                                 referencedTableName="REVIEW"
+                                 referencedColumnNames="ID"/>
+        <addForeignKeyConstraint baseTableName="REL_USER_FILM_REVIEW" baseColumnNames="USER_ID" constraintName="FK_REL_USER_FILM_REVIEW_USER"
+                                 referencedTableName="USER"
+                                 referencedColumnNames="ID"/>
+    </changeSet>
+
+</databaseChangeLog>
