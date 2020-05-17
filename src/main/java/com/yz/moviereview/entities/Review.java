@@ -1,11 +1,11 @@
 package com.yz.moviereview.entities;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import lombok.Data;
 
 import javax.persistence.*;
-import java.util.ArrayList;
-import java.util.List;
 
 @Data
 @Entity
@@ -24,7 +24,13 @@ public class Review {
     @Column(nullable = false)
     private Integer rate;
 
-    @JsonIgnore
-    @OneToMany(mappedBy = "film", cascade = {CascadeType.PERSIST, CascadeType.MERGE})
-    private List<UserFilmReviewRelation> filmReviewRelations = new ArrayList<>();
+    @ManyToOne
+    @JsonBackReference
+    @JoinColumn(name = "FILM_ID", nullable = false)
+    private Film film;
+
+    @ManyToOne
+    @JsonManagedReference
+    @JoinColumn(name = "USER_ID", nullable = false)
+    private User user;
 }

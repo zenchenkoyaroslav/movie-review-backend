@@ -37,12 +37,8 @@ public class Film {
     @JsonManagedReference
     List<Actor> actors = new ArrayList<>();
 
-    @JsonIgnore
-    @OneToMany(mappedBy = "film", cascade = {CascadeType.PERSIST, CascadeType.MERGE})
-    private List<UserFilmReviewRelation> filmReviewRelations = new ArrayList<>();
-
-    @Transient
-    @JsonInclude(JsonInclude.Include.NON_NULL)
-    List<Review> reviews;
+    @OneToMany(mappedBy = "film")
+    @JsonManagedReference
+    private List<Review> reviews = new ArrayList<>();
 
 }
