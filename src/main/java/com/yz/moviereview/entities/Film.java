@@ -1,5 +1,7 @@
 package com.yz.moviereview.entities;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
 import lombok.Data;
 
@@ -35,7 +37,12 @@ public class Film {
     @JsonManagedReference
     List<Actor> actors = new ArrayList<>();
 
+    @JsonIgnore
     @OneToMany(mappedBy = "film", cascade = {CascadeType.PERSIST, CascadeType.MERGE})
     private List<UserFilmReviewRelation> filmReviewRelations = new ArrayList<>();
+
+    @Transient
+    @JsonInclude(JsonInclude.Include.NON_NULL)
+    List<Review> reviews;
 
 }
