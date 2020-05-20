@@ -1,15 +1,18 @@
 package com.yz.moviereview.service;
 
+import com.yz.moviereview.entities.USERROLE;
 import com.yz.moviereview.entities.User;
 import com.yz.moviereview.exceptions.ValidationException;
 import com.yz.moviereview.repositories.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.util.StringUtils;
 
 import javax.annotation.PostConstruct;
 import java.nio.charset.StandardCharsets;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
+import java.util.Objects;
 import java.util.UUID;
 
 @Service
@@ -45,6 +48,9 @@ public class UserService {
         if (!encodedPassword.equals(user.getPassword())){
             throw new ValidationException("Bad password");
         }
+        if (user.getRole() == USERROLE.DELETED){
+            throw new ValidationException("User did delete");
+        }
         String token = UUID.randomUUID().toString();
         user.setToken(token);
         user = userRepository.save(user);
@@ -61,6 +67,60 @@ public class UserService {
 
     public User getUserByToken(String token){
         return userRepository.findByToken(token);
+    }
+
+    public User createUser(User user){
+        Objects.requireNonNull(user);
+        if (StringUtils.isEmpty(user.getPassword())){
+            throw new ValidationException("Password is empty");
+        }
+        user.setPassword(encodePassword(user.getPassword()));
+        if (StringUtils.isEmpty(user.getEmail())){
+            throw new ValidationException("Email is empty");
+        }
+        if (StringUtils.isEmpty(user.getName())){
+            throw new ValidationException("Name is empty");
+        }
+        if (StringUtils.isEmpty(user.getUsername())){
+            throw new ValidationException("Username is empty");
+        }
+        user.setRole(USERROLE.USER);
+        return userRepository.save(user);
+    }
+
+    public User update(Long id, User user){
+        User fromDB = userRepository.getOne(id);
+        if (fromDB == null){
+            throw new ValidationException("User not exists");
+        }
+        Objects.requireNonNull(user);
+        if (StringUtils.isEmpty(user.getPassword())){
+            user.setPassword(encodePassword(user.getPassword()));
+        } else {
+            user.setPassword(fromDB.getPassword());
+        }
+        if (StringUtils.isEmpty(user.getEmail())){
+            throw new ValidationException("Email is empty");
+        }
+        if (StringUtils.isEmpty(user.getName())){
+            throw new ValidationException("Name is empty");
+        }
+        if (StringUtils.isEmpty(user.getUsername())){
+            throw new ValidationException("Username is empty");
+        }
+        if (user.getRole() == null){
+            throw new ValidationException("Role is empty");
+        }
+        user.setReviews(fromDB.getReviews());
+        return userRepository.save(user);
+    }
+
+    public void deleteUser(Long id){
+        User userDB = userRepository.getOne(id);
+        if (userDB != null){
+            userDB.setRole(USERROLE.DELETED);
+        }
+        userRepository.save(userDB);
     }
 
 

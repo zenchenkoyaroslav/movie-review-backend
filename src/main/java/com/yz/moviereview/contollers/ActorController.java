@@ -2,6 +2,9 @@ package com.yz.moviereview.contollers;
 
 
 import com.yz.moviereview.entities.Actor;
+import com.yz.moviereview.entities.USERROLE;
+import com.yz.moviereview.entities.User;
+import com.yz.moviereview.exceptions.ValidationException;
 import com.yz.moviereview.service.ActorService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -31,19 +34,28 @@ public class ActorController extends Controller {
 
     @PostMapping
     public @ResponseBody Actor newActor(@RequestBody Actor actor, HttpServletRequest request){
-        getUser(request);
+        User user = getUser(request);
+        if (user.getRole() != USERROLE.ADMIN){
+            throw new ValidationException("User is not admin");
+        }
         return actorService.addActor(actor);
     }
 
     @PutMapping("/{id}")
     public Actor updateActor(@PathVariable("id") Long id, @RequestBody Actor actor, HttpServletRequest request){
-        getUser(request);
+        User user = getUser(request);
+        if (user.getRole() != USERROLE.ADMIN){
+            throw new ValidationException("User is not admin");
+        }
         return actorService.updateActor(id, actor);
     }
 
     @DeleteMapping("/{id}")
     public ResponseEntity<?> deleteActor(@PathVariable("id") Long id, HttpServletRequest request){
-        getUser(request);
+        User user = getUser(request);
+        if (user.getRole() != USERROLE.ADMIN){
+            throw new ValidationException("User is not admin");
+        }
         actorService.deleteActor(id);
         return new ResponseEntity<>(HttpStatus.OK);
     }

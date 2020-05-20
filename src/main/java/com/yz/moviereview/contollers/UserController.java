@@ -1,10 +1,10 @@
 package com.yz.moviereview.contollers;
 
+import com.yz.moviereview.entities.USERROLE;
 import com.yz.moviereview.entities.User;
 import com.yz.moviereview.exceptions.ValidationException;
 import com.yz.moviereview.requests.UserRequest;
 import org.springframework.http.HttpStatus;
-import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -34,6 +34,32 @@ public class UserController extends Controller {
             userService.logout(userDB);
         } catch (ValidationException e){
         }
+        return new ResponseEntity<>(HttpStatus.OK);
+    }
+
+    @PostMapping
+    public @ResponseBody User newUser(User user){
+        return userService.createUser(user);
+    }
+
+    @PutMapping("/{id}")
+    public @ResponseBody User updateUser(@PathVariable("id") Long id, @RequestBody User user, HttpServletRequest request){
+        User current = getUser(request);
+        if (current.getId() != id){
+            if (current.getRole() != USERROLE.ADMIN){
+                throw new ValidationException("User is not admin");
+            }
+        }
+        return userService.update(id, user);
+    }
+
+    @DeleteMapping("/{id}")
+    public ResponseEntity<?> deleteUser(@PathVariable("id") Long id, HttpServletRequest request) {
+        User current = getUser(request);
+        if (current.getRole() != USERROLE.ADMIN){
+            throw new ValidationException("User is not admin");
+        }
+        userService.deleteUser(id);
         return new ResponseEntity<>(HttpStatus.OK);
     }
 }
