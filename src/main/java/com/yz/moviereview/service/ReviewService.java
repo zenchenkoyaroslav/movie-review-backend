@@ -55,6 +55,10 @@ public class ReviewService {
         if (user.getRole() == USERROLE.DELETED){
             throw new ValidationException("User is deleted");
         }
+        Review reviewDB = reviewRepository.findByUser_IdAndFilm_Id(user.getId(), film.getId());
+        if (reviewDB != null){
+            throw new ValidationException("User already add review");
+        }
         review.setFilm(film);
         review.setUser(user);
         return reviewRepository.save(review);
