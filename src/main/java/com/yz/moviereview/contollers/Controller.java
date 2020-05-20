@@ -1,5 +1,6 @@
 package com.yz.moviereview.contollers;
 
+import com.yz.moviereview.entities.USERROLE;
 import com.yz.moviereview.entities.User;
 import com.yz.moviereview.exceptions.ValidationException;
 import com.yz.moviereview.service.UserService;
@@ -20,6 +21,9 @@ public class Controller {
         User user = userService.getUserByToken(authHeader);
         if (user == null){
             throw new ValidationException("Authorization failed! Wrong token");
+        }
+        if (user.getRole() == USERROLE.DELETED){
+            throw new ValidationException("User is deleted");
         }
         return user;
     }

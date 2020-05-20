@@ -69,6 +69,10 @@ public class UserService {
         return userRepository.findByToken(token);
     }
 
+    public User getUser(Long id){
+        return userRepository.getOne(id);
+    }
+
     public User createUser(User user){
         Objects.requireNonNull(user);
         if (StringUtils.isEmpty(user.getPassword())){
