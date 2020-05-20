@@ -1,13 +1,12 @@
 package com.yz.moviereview.repositories;
 
 import com.yz.moviereview.entities.Film;
-import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.data.repository.PagingAndSortingRepository;
 
-import java.util.List;
-
-public interface FilmRepository extends JpaRepository<Film, Long>, PagingAndSortingRepository<Film, Long> {
-    List<Film> findByCountryAndYear(String country, Integer year);
-    List<Film> findByCountry(String country);
-    List<Film> findByYear(Integer year);
+public interface FilmRepository extends PagingAndSortingRepository<Film, Long> {
+    Page<Film> findAllByCountryAndYear(String country, Integer year, Pageable pageable);
+    Page<Film> findAllByCountry(String country, Pageable pageable);
+    Page<Film> findAllByYear(Integer year, Pageable pageable);
 }

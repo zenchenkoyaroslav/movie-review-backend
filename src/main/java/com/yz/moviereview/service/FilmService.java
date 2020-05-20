@@ -10,6 +10,8 @@ import org.springframework.stereotype.Service;
 import org.springframework.util.StringUtils;
 
 import java.util.List;
+import java.util.stream.Collectors;
+import java.util.stream.StreamSupport;
 
 @Service
 public class FilmService {
@@ -17,15 +19,24 @@ public class FilmService {
     private FilmRepository filmRepository;
 
     public List<Film> getAllFilms(){
-        return filmRepository.findAll();
+        return StreamSupport.stream(filmRepository.findAll().spliterator(), false).collect(Collectors.toList());
     }
 
-    public Page<Film> getFilms(Pageable pageable){
+    public Page<Film> getFilms(String country, Integer year, Pageable pageable){
+        if (country != null && year != null){
+            return filmRepository.findAllByCountryAndYear(country, year, pageable);
+        }
+        if (country != null){
+            return filmRepository.findAllByCountry(country, pageable);
+        }
+        if (year != null){
+            return filmRepository.findAllByYear(year, pageable);
+        }
         return filmRepository.findAll(pageable);
     }
 
     public Film getFilm(Long id){
-        return filmRepository.getOne(id);
+        return filmRepository.findById(id).get();
     }
 
     public Film addFilm(Film film){
@@ -48,7 +59,7 @@ public class FilmService {
     }
 
     public Film updateFilm(Long id, Film film){
-        Film fromDB = filmRepository.getOne(id);
+        Film fromDB = filmRepository.findById(id).get();
         if (fromDB==null){
             throw new ValidationException("Film doesnt exists");
         }

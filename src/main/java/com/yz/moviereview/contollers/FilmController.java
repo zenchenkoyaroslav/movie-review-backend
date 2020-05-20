@@ -23,8 +23,8 @@ public class FilmController extends Controller {
 
     @GetMapping
     public @ResponseBody
-    Page<Film> getFilms(Pageable pageable){
-        return filmService.getFilms(pageable);
+    Page<Film> getFilms(@RequestParam(value = "country", required = false) String country, @RequestParam(value = "year", required = false) Integer year, Pageable pageable){
+        return filmService.getFilms(country, year, pageable);
     }
 
     @GetMapping("/{id}")
