@@ -119,8 +119,8 @@ public class UserService {
         User userDB = userRepository.getOne(id);
         if (userDB != null){
             userDB.setRole(USERROLE.DELETED);
+            userRepository.save(userDB);
         }
-        userRepository.save(userDB);
     }
 
 
