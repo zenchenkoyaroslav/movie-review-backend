@@ -30,6 +30,7 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 public class UserControllerTest {
     private static final Long USER_ID_1 = 1L;
     private static final String USER_USERNAME_1 = "user";
+    private static final String USER_NAME_1 = "name";
     private static final String USER_PASSWORD_1 = "password";
     private static final String USER_PASSWORD_HASH_1 = "$2a$10$ITjRTdRw4E4n3aa2z0EWteNOavKfBZBl0dS4EkYtZiIKmcL2U9rbC";
 
@@ -42,7 +43,7 @@ public class UserControllerTest {
     @InjectMocks
     private UserController userController;
 
-    @MockBean
+    @InjectMocks
     private UserService userService;
 
     User user;
@@ -52,6 +53,7 @@ public class UserControllerTest {
         MockitoAnnotations.initMocks(this);
         user = new User();
         user.setId(USER_ID_1);
+        user.setName(USER_NAME_1);
         user.setUsername(USER_USERNAME_1);
         user.setPassword(USER_PASSWORD_HASH_1);
         user.setEmail("test@test.test");
