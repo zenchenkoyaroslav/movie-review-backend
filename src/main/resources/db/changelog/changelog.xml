@@ -225,7 +225,7 @@
             <column name="TITLE" value="Kiss my ass"/>
             <column name="CONTENT" value="Stupid film"/>
             <column name="RATE" value="2"/>
-            <column name="USER_ID" value="1"/>
+            <column name="USER_ID" value="2"/>
             <column name="FILM_ID" value="2"/>
         </insert>
     </changeSet>

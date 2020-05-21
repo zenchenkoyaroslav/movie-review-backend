@@ -6,6 +6,7 @@ import com.yz.moviereview.entities.USERROLE;
 import com.yz.moviereview.entities.User;
 import com.yz.moviereview.exceptions.ValidationException;
 import com.yz.moviereview.repositories.ReviewRepository;
+import com.yz.moviereview.requests.ReviewRequest;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.util.StringUtils;
@@ -24,44 +25,42 @@ public class ReviewService {
     @Autowired
     private UserService userService;
 
-    public Review addReview(Review review){
+    public Review addReview(ReviewRequest review){
         Objects.requireNonNull(review);
+        Review newReview = new Review();
         if (StringUtils.isEmpty(review.getTitle())){
             throw new ValidationException("Title is empty");
         }
+        newReview.setTitle(review.getTitle());
         if (StringUtils.isEmpty(review.getContent())){
             throw new ValidationException("Content is empty");
         }
+        newReview.setContent(review.getContent());
         if (review.getRate() == null){
             throw new ValidationException("Rate is null");
         }
         if (review.getRate() < 1 || review.getRate() > 5){
             throw new ValidationException("Rate should be in interval from 1 to 5");
         }
-        if (review.getFilm() == null){
-            throw new ValidationException("Film is null");
-        }
-        if (review.getUser() == null){
-            throw new ValidationException("User is null");
-        }
-        Film film = filmService.getFilm(review.getFilm().getId());
+        newReview.setRate(review.getRate());
+        Film film = filmService.getFilm(review.getFilmId());
         if (film == null){
             throw new ValidationException("Film doesnt exist");
         }
-        User user = userService.getUser(review.getUser().getId());
+        newReview.setFilm(film);
+        User user = userService.getUser(review.getUserId());
         if (user == null){
             throw new ValidationException("User doesnt exist");
         }
         if (user.getRole() == USERROLE.DELETED){
             throw new ValidationException("User is deleted");
         }
+        newReview.setUser(user);
         Review reviewDB = reviewRepository.findByUser_IdAndFilm_Id(user.getId(), film.getId());
         if (reviewDB != null){
             throw new ValidationException("User already add review");
         }
-        review.setFilm(film);
-        review.setUser(user);
-        return reviewRepository.save(review);
+        return reviewRepository.save(newReview);
     }
 
 }

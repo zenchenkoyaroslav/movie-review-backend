@@ -40,6 +40,12 @@ public class UserService {
     }
 
     public User login(String username, String password){
+        if (StringUtils.isEmpty(username)){
+            throw new ValidationException("Username is empty");
+        }
+        if (StringUtils.isEmpty(password)){
+            throw new ValidationException("Password is empty");
+        }
         User user = userRepository.findByUsername(username);
         if (user == null){
             throw new ValidationException("User doesnt exists");
@@ -53,7 +59,7 @@ public class UserService {
         }
         String token = UUID.randomUUID().toString();
         user.setToken(token);
-        user = userRepository.save(user);
+        user = userRepository.saveAndFlush(user);
         return user;
     }
 

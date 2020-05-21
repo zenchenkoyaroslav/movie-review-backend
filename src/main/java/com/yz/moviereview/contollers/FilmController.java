@@ -1,9 +1,12 @@
 package com.yz.moviereview.contollers;
 
 import com.yz.moviereview.entities.Film;
+import com.yz.moviereview.entities.Review;
 import com.yz.moviereview.entities.USERROLE;
 import com.yz.moviereview.entities.User;
 import com.yz.moviereview.exceptions.ValidationException;
+import com.yz.moviereview.requests.FilmResponse;
+import com.yz.moviereview.requests.ReviewResponse;
 import com.yz.moviereview.service.FilmService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
@@ -13,6 +16,8 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.http.HttpServletRequest;
+import java.util.ArrayList;
+import java.util.List;
 
 @RestController
 @RequestMapping("/films")
@@ -29,9 +34,28 @@ public class FilmController extends Controller {
 
     @GetMapping("/{id}")
     public @ResponseBody
-    Film getFilm(@PathVariable(value = "id", required = true) Long id){
+    FilmResponse getFilm(@PathVariable(value = "id", required = true) Long id){
         Film film = filmService.getFilm(id);
-        return film;
+        FilmResponse filmResponse = new FilmResponse();
+        filmResponse.setId(film.getId());
+        filmResponse.setCountry(film.getCountry());
+        filmResponse.setDescription(film.getDescription());
+        filmResponse.setTitle(film.getTitle());
+        filmResponse.setPoster(film.getPoster());
+        filmResponse.setYear(film.getYear());
+        filmResponse.setActors(film.getActors());
+        List<ReviewResponse> reviewResponses = new ArrayList<>();
+        for (Review review : film.getReviews()){
+            ReviewResponse reviewResponse = new ReviewResponse();
+            reviewResponse.setId(review.getId());
+            reviewResponse.setTitle(review.getTitle());
+            reviewResponse.setContent(review.getContent());
+            reviewResponse.setRate(review.getRate());
+            reviewResponse.setUserFullname(review.getUser().getName());
+            reviewResponses.add(reviewResponse);
+        }
+        filmResponse.setReviews(reviewResponses);
+        return filmResponse;
     }
     @PostMapping
     public @ResponseBody Film newFilm(@RequestBody Film film, HttpServletRequest request){
