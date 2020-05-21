@@ -44,7 +44,7 @@ public class ReviewService {
         if (review.getUser() == null){
             throw new ValidationException("User is null");
         }
-        Film film = filmService.getFilm(review.getId());
+        Film film = filmService.getFilm(review.getFilm().getId());
         if (film == null){
             throw new ValidationException("Film doesnt exist");
         }
