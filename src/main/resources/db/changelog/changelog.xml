@@ -166,24 +166,30 @@
     <changeSet id="5" author="Yaroslav">
         <insert tableName="REVIEW">
             <column name="ID" value="1"/>
-            <column name="TITLE" value="Piece of shit"/>
-            <column name="CONTENT" value="Realy piece of shit"/>
-            <column name="RATE" value="1"/>
+            <column name="TITLE" value="Disappointment"/>
+            <column name="CONTENT" value="An unsatisfying ending to the upsettingly bad sequel movies. It's difficult to find a trilogy where each individual movie is this loosely connected to the others. The highest praise I can give to The Rise of Skywalker is that it's at least marginally better than The Last Jedi.
+
+Most plot points feel shoehorned into the story. Chewie doesn't have much to do with anything, he's just kind of there until the end where they make a bizarre callback to a joke about him not getting a medal for blowing up the original Deathstar 50 years ago. Even after three movies Rey still manages to feel completely disconnected from all the other main characters. She barely ever interacts with anyone other than Kylo Ren and when she does she just turns around and leaves. How are these people friends? The chemistry between Rose and Finn was so terrible they decided to abandon the whole thing - thank god. They also opted out of recreating the late Carrie Fisher digitally and instead have her appear (mostly) as herself in these abominations where you can easily tell she's acting out a very different script that is cut together with new scenes to kind of fit the narrative. You get that same feeling you do from the Star Wars with Tommy Wiseau clips, except it's not funny.
+
+Out of all the character arcs, the only one that kind of succeeds is that of Ben Solo / Kylo Ren. It's a shame they just didn't really write anything for him, either. He just arrives out of nowhere when he's needed for a scene. They even have him physically interact with objects and Rey when they're doing that weird force projection chat thing from The Last Jedi again - multiple times. Which brings me to the next section I'm going to condense into a single sentence: that's not how the force works!
+
+I would call this movie bad fan fiction, but at least fans usually respect the limitations of the universe they're working with. Star Wars died with the prequels in 2005. It's a great shame Disney is parading its rotting corpse in theaters for money."/>
+            <column name="RATE" value="3"/>
             <column name="USER_ID" value="1"/>
             <column name="FILM_ID" value="1"/>
         </insert>
         <insert tableName="REVIEW">
             <column name="ID" value="2"/>
-            <column name="TITLE" value="Porn"/>
-            <column name="CONTENT" value="Nice porn film"/>
+            <column name="TITLE" value="10 of 10"/>
+            <column name="CONTENT" value="Shrek is a hilarious film that uses parody comedy to appeal to all viewers. The story follows an ogre, Shrek, who is on a quest to get his swamp back from an evil lord and gives a funny take on the friends he makes along the way. Along with tying in clever references to the real world, the entire story is a parody of the hero’s journey, such as having a “mentor” character that is a talking donkey (Eddie Murphy) and through his heroic goal that is really motivated by a selfish desire. I would recommend Shrek to anyone who is looking for a movie filled with great laughs."/>
             <column name="RATE" value="5"/>
             <column name="USER_ID" value="1"/>
             <column name="FILM_ID" value="2"/>
         </insert>
         <insert tableName="REVIEW">
             <column name="ID" value="3"/>
-            <column name="TITLE" value="Kiss my ass"/>
-            <column name="CONTENT" value="Stupid film"/>
+            <column name="TITLE" value="Super"/>
+            <column name="CONTENT" value="Once upon a time in a far away swamp, there lived an ornery ogre named Shrek (Myers) whose precious solitude is suddenly shattered by an invasion of annoying fairy-tale characters."/>
             <column name="RATE" value="2"/>
             <column name="USER_ID" value="2"/>
             <column name="FILM_ID" value="2"/>
