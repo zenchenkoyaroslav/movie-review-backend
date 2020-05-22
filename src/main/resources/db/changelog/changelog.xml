@@ -246,30 +246,6 @@
             <column name="COUNTRY" value="USA"/>
             <column name="POSTER" value="https://img.csfd.cz/files/images/user/profile/163/532/163532388_60e9ad.jpg"/>
         </insert>
-        <insert tableName="REL_FILM_ACTOR">
-            <column name="FILM_ID" value="1"/>
-            <column name="ACTOR_ID" value="1"/>
-        </insert>
-        <insert tableName="REL_FILM_ACTOR">
-            <column name="FILM_ID" value="1"/>
-            <column name="ACTOR_ID" value="2"/>
-        </insert>
-        <insert tableName="REL_FILM_ACTOR">
-            <column name="FILM_ID" value="3"/>
-            <column name="ACTOR_ID" value="2"/>
-        </insert>
-        <insert tableName="REL_FILM_ACTOR">
-            <column name="FILM_ID" value="3"/>
-            <column name="ACTOR_ID" value="1"/>
-        </insert>
-        <insert tableName="REL_FILM_ACTOR">
-            <column name="FILM_ID" value="3"/>
-            <column name="ACTOR_ID" value="2"/>
-        </insert>
-        <insert tableName="REL_FILM_ACTOR">
-            <column name="FILM_ID" value="3"/>
-            <column name="ACTOR_ID" value="3"/>
-        </insert>
     </changeSet>
     <changeSet id="7" author="Yaroslav">
         <insert tableName="ACTOR">
