@@ -240,14 +240,6 @@
         </insert>
         <insert tableName="FILM">
             <column name="ID" value="8"/>
-            <column name="TITLE" value="The Invisible Man"/>
-            <column name="DESCRIPTION" value="The Invisible Man Bla bla bla" />
-            <column name="YEAR" value="2020"/>
-            <column name="COUNTRY" value="USA"/>
-            <column name="POSTER" value="https://upload.wikimedia.org/wikipedia/en/3/3a/The_Invisible_Man_%282020_film%29_-_release_poster.jpg"/>
-        </insert>
-        <insert tableName="FILM">
-            <column name="ID" value="9"/>
             <column name="TITLE" value="Chernobyl"/>
             <column name="DESCRIPTION" value="Soviet nuclear physicist Valery Legasov (Jared Harris), Soviet Deputy Prime Minister Boris Shcherbina (Stellan Skarsgård), and Soviet nuclear physicist Ulana Khomyuk (Emily Watson) are some of the people who worked to stop radioactive material from spreading further during the 1986 nuclear disaster at the Chernobyl Nuclear Power Plant in this HBO/Sky co-production five-part miniseries." />
             <column name="YEAR" value="2019"/>
@@ -255,7 +247,7 @@
             <column name="POSTER" value="https://m.media-amazon.com/images/M/MV5BZGQ2YmMxZmEtYjI5OS00NzlkLTlkNTEtYWMyMzkyMzc2MDU5XkEyXkFqcGdeQXVyMzQ2MDI5NjU@._V1_SY1000_CR0,0,666,1000_AL_.jpg"/>
         </insert>
         <insert tableName="FILM">
-            <column name="ID" value="10"/>
+            <column name="ID" value="9"/>
             <column name="TITLE" value="Sherlock"/>
             <column name="DESCRIPTION" value="This three-part series retells the tale of England's most celebrated detective but in a modern-day setting, with Benedict Cumberbatch and Martin Freeman taking the leads as Sherlock Holmes and Dr John Watson respectively." />
             <column name="YEAR" value="2010"/>
@@ -263,7 +255,7 @@
             <column name="POSTER" value="https://static.posters.cz/image/750webp/33910.webp"/>
         </insert>
         <insert tableName="FILM">
-            <column name="ID" value="11"/>
+            <column name="ID" value="10"/>
             <column name="TITLE" value="Upgrade"/>
             <column name="DESCRIPTION" value="After his wife is killed during a brutal mugging that also leaves him paralyzed, Grey Trace (Logan Marshall Green) is approached by a billionaire inventor with an experimental cure that will “upgrade” his body. The cure - an Artificial Intelligence implant called STEM - gives Grey physical abilities beyond anything experienced and the ability to relentlessly claim vengeance against those who murdered his wife and left him for dead.Upgrade Bla bla bla" />
             <column name="YEAR" value="2018"/>
