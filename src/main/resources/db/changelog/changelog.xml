@@ -278,6 +278,56 @@
             <column name="NAME" value="Emma Watson"/>
             <column name="PHOTO" value="https://www.kinopoisk.ru/images/sm_actor/40779.jpg"/>
         </insert>
+        <insert tableName="ACTOR">
+            <column name="ID" value="7"/>
+            <column name="NAME" value="Henry Cavill"/>
+            <column name="PHOTO" value="https://www.kinopoisk.ru/images/sm_actor/34227.jpg"/>
+        </insert>
+        <insert tableName="ACTOR">
+            <column name="ID" value="8"/>
+            <column name="NAME" value="Michael J. Fox"/>
+            <column name="PHOTO" value="https://www.kinopoisk.ru/images/sm_actor/181.jpg"/>
+        </insert>
+        <insert tableName="ACTOR">
+            <column name="ID" value="9"/>
+            <column name="NAME" value="Christopher Lloyd"/>
+            <column name="PHOTO" value="https://www.kinopoisk.ru/images/sm_actor/3514.jpg"/>
+        </insert>
+        <insert tableName="ACTOR">
+            <column name="ID" value="10"/>
+            <column name="NAME" value="Elisabeth Moss"/>
+            <column name="PHOTO" value="https://www.kinopoisk.ru/images/sm_actor/22265.jpg"/>
+        </insert>
+        <insert tableName="ACTOR">
+            <column name="ID" value="11"/>
+            <column name="NAME" value="Jared Harris"/>
+            <column name="PHOTO" value="https://www.kinopoisk.ru/images/sm_actor/1402.jpg"/>
+        </insert>
+        <insert tableName="ACTOR">
+            <column name="ID" value="12"/>
+            <column name="NAME" value="Stellan Skarsgård"/>
+            <column name="PHOTO" value="https://www.kinopoisk.ru/images/sm_actor/11661.jpg"/>
+        </insert>
+        <insert tableName="ACTOR">
+            <column name="ID" value="13"/>
+            <column name="NAME" value="Emily Watson"/>
+            <column name="PHOTO" value="https://www.kinopoisk.ru/images/sm_actor/12557.jpg"/>
+        </insert>
+        <insert tableName="ACTOR">
+            <column name="ID" value="14"/>
+            <column name="NAME" value="Benedict Cumberbatch"/>
+            <column name="PHOTO" value="https://www.kinopoisk.ru/images/sm_actor/34549.jpg"/>
+        </insert>
+        <insert tableName="ACTOR">
+            <column name="ID" value="15"/>
+            <column name="NAME" value="Martin Freeman"/>
+            <column name="PHOTO" value="https://www.kinopoisk.ru/images/sm_actor/33496.jpg"/>
+        </insert>
+        <insert tableName="ACTOR">
+            <column name="ID" value="16"/>
+            <column name="NAME" value="Logan Marshall-Green"/>
+            <column name="PHOTO" value="https://www.kinopoisk.ru/images/sm_actor/225042.jpg"/>
+        </insert>
     </changeSet>
     <changeSet id="8" author="Yaroslav">
         <insert tableName="REL_FILM_ACTOR">
@@ -290,7 +340,7 @@
         </insert>
         <insert tableName="REL_FILM_ACTOR">
             <column name="FILM_ID" value="3"/>
-            <column name="ACTOR_ID" value="2"/>
+            <column name="ACTOR_ID" value="3"/>
         </insert>
         <insert tableName="REL_FILM_ACTOR">
             <column name="FILM_ID" value="2"/>
@@ -303,6 +353,42 @@
         <insert tableName="REL_FILM_ACTOR">
             <column name="FILM_ID" value="3"/>
             <column name="ACTOR_ID" value="6"/>
+        </insert>
+        <insert tableName="REL_FILM_ACTOR">
+            <column name="FILM_ID" value="5"/>
+            <column name="ACTOR_ID" value="7"/>
+        </insert>
+        <insert tableName="REL_FILM_ACTOR">
+            <column name="FILM_ID" value="6"/>
+            <column name="ACTOR_ID" value="8"/>
+        </insert>
+        <insert tableName="REL_FILM_ACTOR">
+            <column name="FILM_ID" value="7"/>
+            <column name="ACTOR_ID" value="10"/>
+        </insert>
+        <insert tableName="REL_FILM_ACTOR">
+            <column name="FILM_ID" value="8"/>
+            <column name="ACTOR_ID" value="11"/>
+        </insert>
+        <insert tableName="REL_FILM_ACTOR">
+            <column name="FILM_ID" value="8"/>
+            <column name="ACTOR_ID" value="12"/>
+        </insert>
+        <insert tableName="REL_FILM_ACTOR">
+            <column name="FILM_ID" value="8"/>
+            <column name="ACTOR_ID" value="13"/>
+        </insert>
+        <insert tableName="REL_FILM_ACTOR">
+            <column name="FILM_ID" value="9"/>
+            <column name="ACTOR_ID" value="14"/>
+        </insert>
+        <insert tableName="REL_FILM_ACTOR">
+            <column name="FILM_ID" value="9"/>
+            <column name="ACTOR_ID" value="15"/>
+        </insert>
+        <insert tableName="REL_FILM_ACTOR">
+            <column name="FILM_ID" value="10"/>
+            <column name="ACTOR_ID" value="16"/>
         </insert>
     </changeSet>
 
