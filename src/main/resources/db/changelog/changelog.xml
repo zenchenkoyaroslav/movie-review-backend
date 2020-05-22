@@ -128,7 +128,7 @@
             <column name="DESCRIPTION" value="Star Wars Bla bla bla" />
             <column name="YEAR" value="2013"/>
             <column name="COUNTRY" value="USA"/>
-            <column name="POSTER" value="https://avatars.mds.yandex.net/get-kinopoisk-image/1600647/9bdc6690-de82-4a8c-a114-aa3a353bc1da/360"/>
+            <column name="POSTER" value="https://www.google.com/url?sa=i&url=https%3A%2F%2Fwww.starwars.com%2Ffilms%2Fstar-wars-episode-ix-the-rise-of-skywalker&psig=AOvVaw3JimGu3WVJ3mNy7DOyM7Q6&ust=1590222088345000&source=images&cd=vfe&ved=0CAIQjRxqFwoTCOiF6ImFx-kCFQAAAAAdAAAAABAD"/>
         </insert>
         <insert tableName="FILM">
             <column name="ID" value="2"/>
