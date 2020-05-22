@@ -160,7 +160,7 @@
             <column name="DESCRIPTION" value="Monster hunter Geralt of Rivia (Henry Cavill), sorceress Yennefer (Anya Cholatra), and Princess Ciri (Freya Allan) must learn to work together to survive as they journey through the Continent in the fantasy series based on the Polish book series by Andrzej Sapkowski." />
             <column name="YEAR" value="2019"/>
             <column name="COUNTRY" value="USA"/>
-            <column name="POSTER" value="https://i2.wp.com/redanianintelligence.com/wp-content/uploads/2019/12/IMG_20191205_160220.jpg?resize=1084%2C610&ssl=1"/>
+            <column name="POSTER" value="https://i2.wp.com/redanianintelligence.com/wp-content/uploads/2019/12/IMG_20191205_160220.jpg?resize=1084%2C610"/>
         </insert>
         <insert tableName="FILM">
             <column name="ID" value="6"/>
