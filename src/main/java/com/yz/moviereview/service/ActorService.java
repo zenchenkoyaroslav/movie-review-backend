@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.util.StringUtils;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 
@@ -16,7 +17,9 @@ public class ActorService {
     private ActorRepository actorRepository;
 
     public List<Actor> getAllActors(){
-        return actorRepository.findAll();
+        List<Actor> actors = new ArrayList<>();
+        actorRepository.findAll().forEach(actors::add);
+        return actors;
     }
 
     public Actor getActor(Long id){
@@ -42,7 +45,7 @@ public class ActorService {
         if (StringUtils.isEmpty(actor.getPhoto())){
             throw new ValidationException("Photo url is empty");
         }
-        Actor fromDB = actorRepository.getOne(oldId);
+        Actor fromDB = actorRepository.findById(oldId).orElse(null);
         if (fromDB == null){
             throw new ValidationException("Old actor doesnt exists");
         }

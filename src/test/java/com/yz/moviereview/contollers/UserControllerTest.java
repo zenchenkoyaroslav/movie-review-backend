@@ -57,7 +57,7 @@ public class UserControllerTest {
         user.setEmail("test@test.test");
         user.setRole(USERROLE.USER);
         Mockito.when(userRepository.findByUsername(USER_USERNAME_1)).thenReturn(user);
-        Mockito.when(userRepository.saveAndFlush(any())).thenReturn(user);
+        Mockito.when(userRepository.save(any())).thenReturn(user);
     }
 
     @Test

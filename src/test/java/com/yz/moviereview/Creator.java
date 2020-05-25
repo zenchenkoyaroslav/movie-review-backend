@@ -93,7 +93,7 @@ public class Creator {
                 saveChildEntity(propValue);
             }
 
-            JpaRepository dao = (JpaRepository) getDao(entity);
+            CrudRepository dao = (CrudRepository) getDao(entity);
             // if (deleteOthers) {
             //   dao.deleteAllInBatch();
             // }
@@ -109,10 +109,10 @@ public class Creator {
         return field.getDeclaredAnnotationsByType(annotationClass).length > 0;
     }
 
-    private JpaRepository getDao(Object entity) {
+    private CrudRepository getDao(Object entity) {
         String repoClassName = entity.getClass().getSimpleName();
         String repositoryBeanName = repoClassName.substring(0, 1).toLowerCase() + repoClassName.substring(1) + "Repository";
-        return (JpaRepository) applicationContext.getBean(repositoryBeanName);
+        return (CrudRepository) applicationContext.getBean(repositoryBeanName);
     }
 
 

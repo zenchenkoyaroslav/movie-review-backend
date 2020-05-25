@@ -59,7 +59,7 @@ public class UserService {
         }
         String token = UUID.randomUUID().toString();
         user.setToken(token);
-        user = userRepository.saveAndFlush(user);
+        user = userRepository.save(user);
         return user;
     }
 
@@ -76,7 +76,7 @@ public class UserService {
     }
 
     public User getUser(Long id){
-        return userRepository.getOne(id);
+        return userRepository.findById(id).orElse(null);
     }
 
     public User createUser(User user){
@@ -99,7 +99,7 @@ public class UserService {
     }
 
     public User update(Long id, User user){
-        User fromDB = userRepository.getOne(id);
+        User fromDB = userRepository.findById(id).orElse(null);
         if (fromDB == null){
             throw new ValidationException("User not exists");
         }
@@ -126,7 +126,7 @@ public class UserService {
     }
 
     public void deleteUser(Long id){
-        User userDB = userRepository.getOne(id);
+        User userDB = userRepository.findById(id).orElse(null);
         if (userDB != null){
             userDB.setRole(USERROLE.DELETED);
             userRepository.save(userDB);
