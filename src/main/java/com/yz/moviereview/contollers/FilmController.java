@@ -5,6 +5,7 @@ import com.yz.moviereview.entities.Review;
 import com.yz.moviereview.entities.USERROLE;
 import com.yz.moviereview.entities.User;
 import com.yz.moviereview.exceptions.ValidationException;
+import com.yz.moviereview.requests.FilmRequest;
 import com.yz.moviereview.requests.FilmResponse;
 import com.yz.moviereview.requests.ReviewResponse;
 import com.yz.moviereview.service.FilmService;
@@ -58,11 +59,17 @@ public class FilmController extends Controller {
         return filmResponse;
     }
     @PostMapping
-    public @ResponseBody Film newFilm(@RequestBody Film film, HttpServletRequest request){
+    public @ResponseBody Film newFilm(@RequestBody FilmRequest filmRequest, HttpServletRequest request){
         User user = getUser(request);
         if (user.getRole() != USERROLE.ADMIN){
             throw new ValidationException("User is not admin");
         }
+        Film film = new Film();
+        film.setPoster(filmRequest.getPoster());
+        film.setYear(filmRequest.getYear());
+        film.setTitle(filmRequest.getTitle());
+        film.setDescription(filmRequest.getDescription());
+        film.setCountry(filmRequest.getCountry());
         return filmService.addFilm(film);
     }
 
