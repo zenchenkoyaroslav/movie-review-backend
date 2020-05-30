@@ -104,8 +104,39 @@
                                  referencedTableName="USER"
                                  referencedColumnNames="ID"/>
     </changeSet>
-
     <changeSet id="2" author="Yaroslav">
+        <addColumn tableName="USER">
+            <column name="TOKEN" type="varchar"/>
+        </addColumn>
+        <createIndex tableName="USER" indexName="INDEX_USERNAME">
+            <column name="USERNAME"/>
+        </createIndex>
+        <createIndex tableName="USER" indexName="INDEX_TOKEN">
+            <column name="TOKEN"/>
+        </createIndex>
+    </changeSet>
+    
+    <changeSet id="3" author="Yaroslav">
+        <insert tableName="USER">
+            <column name="ID" value="1"/>
+            <column name="NAME" value="Admin"/>
+            <column name="USERNAME" value="admin"/>
+            <column name="EMAIL" value="admin@test.test"/>
+            <column name="PASSWORD" value="5e884898da28047151d0e56f8dc6292773603d0d6aabbdd62a11ef721d1542d8"/>
+            <column name="ROLE" value="ADMIN"/>
+        </insert>
+        <insert tableName="USER">
+            <column name="ID" value="2"/>
+            <column name="NAME" value="Test"/>
+            <column name="USERNAME" value="test"/>
+            <column name="EMAIL" value="test@test.test"/>
+            <column name="PASSWORD" value="5e884898da28047151d0e56f8dc6292773603d0d6aabbdd62a11ef721d1542d8"/>
+            <column name="ROLE" value="USER"/>
+        </insert>
+    </changeSet>
+
+
+    <changeSet id="4" author="Yaroslav">
         <insert tableName="FILM">
             <column name="ID" value="1"/>
             <column name="TITLE" value="Star Wars: Episode IX - The Rise of Skywalker"/>
@@ -130,72 +161,6 @@
             <column name="COUNTRY" value="USA"/>
             <column name="POSTER" value="https://images-na.ssl-images-amazon.com/images/I/713KEd-8jyL._AC_SL1500_.jpg"/>
         </insert>
-    </changeSet>
-
-    <changeSet id="3" author="Yaroslav">
-        <addColumn tableName="USER">
-            <column name="TOKEN" type="varchar"/>
-        </addColumn>
-        <createIndex tableName="USER" indexName="INDEX_USERNAME">
-            <column name="USERNAME"/>
-        </createIndex>
-        <createIndex tableName="USER" indexName="INDEX_TOKEN">
-            <column name="TOKEN"/>
-        </createIndex>
-    </changeSet>
-    
-    <changeSet id="4" author="Yaroslav">
-        <insert tableName="USER">
-            <column name="ID" value="1"/>
-            <column name="NAME" value="Admin"/>
-            <column name="USERNAME" value="admin"/>
-            <column name="EMAIL" value="admin@test.test"/>
-            <column name="PASSWORD" value="5e884898da28047151d0e56f8dc6292773603d0d6aabbdd62a11ef721d1542d8"/>
-            <column name="ROLE" value="ADMIN"/>
-        </insert>
-        <insert tableName="USER">
-            <column name="ID" value="2"/>
-            <column name="NAME" value="Test"/>
-            <column name="USERNAME" value="test"/>
-            <column name="EMAIL" value="test@test.test"/>
-            <column name="PASSWORD" value="5e884898da28047151d0e56f8dc6292773603d0d6aabbdd62a11ef721d1542d8"/>
-            <column name="ROLE" value="USER"/>
-        </insert>
-    </changeSet>
-
-    <changeSet id="5" author="Yaroslav">
-        <insert tableName="REVIEW">
-            <column name="ID" value="1"/>
-            <column name="TITLE" value="Disappointment"/>
-            <column name="CONTENT" value="An unsatisfying ending to the upsettingly bad sequel movies. It's difficult to find a trilogy where each individual movie is this loosely connected to the others. The highest praise I can give to The Rise of Skywalker is that it's at least marginally better than The Last Jedi.
-
-Most plot points feel shoehorned into the story. Chewie doesn't have much to do with anything, he's just kind of there until the end where they make a bizarre callback to a joke about him not getting a medal for blowing up the original Deathstar 50 years ago. Even after three movies Rey still manages to feel completely disconnected from all the other main characters. She barely ever interacts with anyone other than Kylo Ren and when she does she just turns around and leaves. How are these people friends? The chemistry between Rose and Finn was so terrible they decided to abandon the whole thing - thank god. They also opted out of recreating the late Carrie Fisher digitally and instead have her appear (mostly) as herself in these abominations where you can easily tell she's acting out a very different script that is cut together with new scenes to kind of fit the narrative. You get that same feeling you do from the Star Wars with Tommy Wiseau clips, except it's not funny.
-
-Out of all the character arcs, the only one that kind of succeeds is that of Ben Solo / Kylo Ren. It's a shame they just didn't really write anything for him, either. He just arrives out of nowhere when he's needed for a scene. They even have him physically interact with objects and Rey when they're doing that weird force projection chat thing from The Last Jedi again - multiple times. Which brings me to the next section I'm going to condense into a single sentence: that's not how the force works!
-
-I would call this movie bad fan fiction, but at least fans usually respect the limitations of the universe they're working with. Star Wars died with the prequels in 2005. It's a great shame Disney is parading its rotting corpse in theaters for money."/>
-            <column name="RATE" value="3"/>
-            <column name="USER_ID" value="1"/>
-            <column name="FILM_ID" value="1"/>
-        </insert>
-        <insert tableName="REVIEW">
-            <column name="ID" value="2"/>
-            <column name="TITLE" value="10 of 10"/>
-            <column name="CONTENT" value="Shrek is a hilarious film that uses parody comedy to appeal to all viewers. The story follows an ogre, Shrek, who is on a quest to get his swamp back from an evil lord and gives a funny take on the friends he makes along the way. Along with tying in clever references to the real world, the entire story is a parody of the hero’s journey, such as having a “mentor” character that is a talking donkey (Eddie Murphy) and through his heroic goal that is really motivated by a selfish desire. I would recommend Shrek to anyone who is looking for a movie filled with great laughs."/>
-            <column name="RATE" value="5"/>
-            <column name="USER_ID" value="1"/>
-            <column name="FILM_ID" value="2"/>
-        </insert>
-        <insert tableName="REVIEW">
-            <column name="ID" value="3"/>
-            <column name="TITLE" value="Super"/>
-            <column name="CONTENT" value="Once upon a time in a far away swamp, there lived an ornery ogre named Shrek (Myers) whose precious solitude is suddenly shattered by an invasion of annoying fairy-tale characters."/>
-            <column name="RATE" value="2"/>
-            <column name="USER_ID" value="2"/>
-            <column name="FILM_ID" value="2"/>
-        </insert>
-    </changeSet>
-    <changeSet id="6" author="Yaroslav">
         <insert tableName="FILM">
             <column name="ID" value="4"/>
             <column name="TITLE" value="Joker"/>
@@ -253,7 +218,39 @@ I would call this movie bad fan fiction, but at least fans usually respect the l
             <column name="POSTER" value="https://img.csfd.cz/files/images/user/profile/163/532/163532388_60e9ad.jpg"/>
         </insert>
     </changeSet>
-    <changeSet id="7" author="Yaroslav">
+    <changeSet id="5" author="Yaroslav">
+        <insert tableName="REVIEW">
+            <column name="ID" value="1"/>
+            <column name="TITLE" value="Disappointment"/>
+            <column name="CONTENT" value="An unsatisfying ending to the upsettingly bad sequel movies. It's difficult to find a trilogy where each individual movie is this loosely connected to the others. The highest praise I can give to The Rise of Skywalker is that it's at least marginally better than The Last Jedi.
+
+Most plot points feel shoehorned into the story. Chewie doesn't have much to do with anything, he's just kind of there until the end where they make a bizarre callback to a joke about him not getting a medal for blowing up the original Deathstar 50 years ago. Even after three movies Rey still manages to feel completely disconnected from all the other main characters. She barely ever interacts with anyone other than Kylo Ren and when she does she just turns around and leaves. How are these people friends? The chemistry between Rose and Finn was so terrible they decided to abandon the whole thing - thank god. They also opted out of recreating the late Carrie Fisher digitally and instead have her appear (mostly) as herself in these abominations where you can easily tell she's acting out a very different script that is cut together with new scenes to kind of fit the narrative. You get that same feeling you do from the Star Wars with Tommy Wiseau clips, except it's not funny.
+
+Out of all the character arcs, the only one that kind of succeeds is that of Ben Solo / Kylo Ren. It's a shame they just didn't really write anything for him, either. He just arrives out of nowhere when he's needed for a scene. They even have him physically interact with objects and Rey when they're doing that weird force projection chat thing from The Last Jedi again - multiple times. Which brings me to the next section I'm going to condense into a single sentence: that's not how the force works!
+
+I would call this movie bad fan fiction, but at least fans usually respect the limitations of the universe they're working with. Star Wars died with the prequels in 2005. It's a great shame Disney is parading its rotting corpse in theaters for money."/>
+            <column name="RATE" value="3"/>
+            <column name="USER_ID" value="1"/>
+            <column name="FILM_ID" value="1"/>
+        </insert>
+        <insert tableName="REVIEW">
+            <column name="ID" value="2"/>
+            <column name="TITLE" value="10 of 10"/>
+            <column name="CONTENT" value="Shrek is a hilarious film that uses parody comedy to appeal to all viewers. The story follows an ogre, Shrek, who is on a quest to get his swamp back from an evil lord and gives a funny take on the friends he makes along the way. Along with tying in clever references to the real world, the entire story is a parody of the hero’s journey, such as having a “mentor” character that is a talking donkey (Eddie Murphy) and through his heroic goal that is really motivated by a selfish desire. I would recommend Shrek to anyone who is looking for a movie filled with great laughs."/>
+            <column name="RATE" value="5"/>
+            <column name="USER_ID" value="1"/>
+            <column name="FILM_ID" value="2"/>
+        </insert>
+        <insert tableName="REVIEW">
+            <column name="ID" value="3"/>
+            <column name="TITLE" value="Super"/>
+            <column name="CONTENT" value="Once upon a time in a far away swamp, there lived an ornery ogre named Shrek (Myers) whose precious solitude is suddenly shattered by an invasion of annoying fairy-tale characters."/>
+            <column name="RATE" value="2"/>
+            <column name="USER_ID" value="2"/>
+            <column name="FILM_ID" value="2"/>
+        </insert>
+    </changeSet>
+    <changeSet id="6" author="Yaroslav">
         <insert tableName="ACTOR">
             <column name="ID" value="1"/>
             <column name="NAME" value="Daisy Ridley"/>
@@ -335,7 +332,7 @@ I would call this movie bad fan fiction, but at least fans usually respect the l
             <column name="PHOTO" value="https://www.kinopoisk.ru/images/sm_actor/225042.jpg"/>
         </insert>
     </changeSet>
-    <changeSet id="8" author="Yaroslav">
+    <changeSet id="7" author="Yaroslav">
         <insert tableName="REL_FILM_ACTOR">
             <column name="FILM_ID" value="1"/>
             <column name="ACTOR_ID" value="1"/>
