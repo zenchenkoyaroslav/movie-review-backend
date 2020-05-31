@@ -74,11 +74,17 @@ public class FilmController extends Controller {
     }
 
     @PutMapping("/{id}")
-    public Film updateFilm(@PathVariable("id") Long id, @RequestBody Film film, HttpServletRequest request){
+    public Film updateFilm(@PathVariable("id") Long id, @RequestBody FilmRequest filmRequest, HttpServletRequest request){
         User user = getUser(request);
         if (user.getRole() != USERROLE.ADMIN){
             throw new ValidationException("User is not admin");
         }
+        Film film = new Film();
+        film.setPoster(filmRequest.getPoster());
+        film.setYear(filmRequest.getYear());
+        film.setTitle(filmRequest.getTitle());
+        film.setDescription(filmRequest.getDescription());
+        film.setCountry(filmRequest.getCountry());
         return filmService.updateFilm(id, film);
     }
 
