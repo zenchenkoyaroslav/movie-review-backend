@@ -10,7 +10,7 @@ Demo version of project: https://movie-review-upce.herokuapp.com/
 User: test 
 Password: password
 
-**Dont use your private data on demo version**
+**Don't use your private data on demo version**
 
 ## Technologies
 * Java
