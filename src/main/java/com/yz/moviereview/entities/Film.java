@@ -37,7 +37,7 @@ public class Film {
     @JsonManagedReference
     List<Actor> actors = new ArrayList<>();
 
-    @OneToMany(mappedBy = "film")
+    @OneToMany(mappedBy = "film", cascade = CascadeType.REMOVE)
     @JsonManagedReference
     private List<Review> reviews = new ArrayList<>();
 
